@@ -1,3 +1,4 @@
+'''
 bagW, metal = map(int, input().split()) # 배낭 최대 무게, 귀금속 개수
 max_price = 0 # 최대 가격
 metal_weight = []
@@ -25,3 +26,22 @@ while(bagW != 0):
         break
 
 print(max_price)
+'''
+# 위 코드로는 테스트 케이스 6개 중 하나 시간초과로 실패
+
+bagW, metal = map(int, input().split()) # 배낭 최대 무게, 귀금속 개수
+max_price = 0 # 최대 가격
+metals = [list(map(int, input().split())) for i in range(metal)] # 귀금속 리스트
+metals.sort(key=lambda x: x[1], reverse=True) # 내림차순으로 정렬
+
+for weight, price in metals:
+    if weight <= bagW:
+        max_price += weight * price
+        bagW -= weight
+    else:
+        max_price += bagW * price
+        break
+print(max_price)
+
+
+
