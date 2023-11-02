@@ -20,34 +20,36 @@ for _ in range(mCnt):
     meetInfo = list(map(str, input().split()))
     meetingRoom(meetInfo[0], int(meetInfo[1]), int(meetInfo[2]))
 
-
-def appendZero(nList):  # 한 자리수에 0 붙이기
-    for i in range(len(nList)):
-        if len(nList[i]) == 1:
-            nList[i] += '0'
-
-
-print(meetings)
-
 for i in range(nCnt):
     start = 0
     end = 0
     isStart = 1  # start인지 확인
     times = []
     if 0 not in meetings[i]:  # 비는 시간이 없을 경우
+        print(f'Room {meetings[i][0]}:')
         print('Not available')
     else:
         for j in range(1, 10):
-            if isStart == 1:
+            if isStart == 1 and meetings[i][j] == 0:
                 start = j + 8
                 end = j + 8
                 isStart = 0
+            elif isStart == 1 and meetings[i][j] == 1:
+                continue
+            elif isStart == 0 and meetings[i][j] == 0:
+                end = j + 9
+                if j == 9:  # 마지막 인덱스일 경우 따로 처리
+                    times.append([start, end])
             else:
                 end = j + 8
-                if meetings[i][j] == 1:
-                    isStart = 1
-                    times.append([start, end])
-    print(times)
+                isStart = 1
+                times.append([start, end])
 
-    if i != nCnt:  # 마지막 아닐 때만 바 출력
+        print(f'Room {meetings[i][0]}:')
+        print(f'{len(times)} available:')
+
+        for time in times:
+            print(f'{str(time[0]).zfill(2)}-{time[1]}') # 09
+
+    if i != (nCnt - 1):  # 마지막 아닐 때만 바 출력
         print('-----')
