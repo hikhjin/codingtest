@@ -1,9 +1,10 @@
 import sys
-n, k = list(map(int, sys.stdin.readline().split()))
-grade = list(map(int, sys.stdin.readline().split()))
+input = sys.stdin.readline
+n, k = list(map(int, input().split()))
+grade = list(map(int, input().split()))
 
 for i in range(k):
-  s1, s2 = list(map(int, sys.stdin.readline().split()))
+  s1, s2 = list(map(int, input().split()))
   ans = 0
   for j in range(s1, s2 + 1):
     ans += grade[j-1]
