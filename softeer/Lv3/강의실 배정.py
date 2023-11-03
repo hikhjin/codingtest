@@ -26,7 +26,7 @@ n = int(input())
 
 ans = 0
 
-# 힙큐 사용한다. (정렬 필요하기 때문)
+# 힙큐 사용 (정렬 필요하기 때문)
 heap = []
 for _ in range(n):
   start, finish = map(int, input().split())
