@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input_1206.txt", "r")
+sys.stdin = open("../D3/input_1206.txt", "r")
 T = int(input())
 for test_case in range(1, T+1):
     cnt = int(input()) # 문자 수
